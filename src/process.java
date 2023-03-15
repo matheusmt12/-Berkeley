@@ -5,13 +5,13 @@ import java.net.InetAddress;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
-public class process1 extends Thread {
+public class process extends Thread {
 
 	private int identity;
 	private int time;
 	private int port;
 
-	process1(int identity, int time,int port) {
+	process(int identity, int time,int port) {
 		this.identity = identity;
 		this.time = time;
 		this.port = port;
@@ -36,7 +36,6 @@ public class process1 extends Thread {
 			String data = new String(pkg.getData(), 0, pkg.getLength());
 			this.time =  Integer.parseInt(data);
 			System.out.println("identity :" + this.identity + " synced " + this.time);
-			System.out.println("Teerminou");
 		} catch (Exception e) {
 			System.out.println("Nao foi possivel enviar a mensagem");
 		}

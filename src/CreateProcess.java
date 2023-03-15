@@ -3,17 +3,17 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 
-public class process2 extends Thread{
+public class CreateProcess extends Thread{
 	
 	
 	
 	public static void main(String[] args) {
 		
-		process1 t1 = new process1(1,5,7000);
+		process t1 = new process(1,5,7000);
 		t1.start();
-		process1 t2 = new process1(2,13,7002);
+		process t2 = new process(2,13,7002);
 		t2.start();
-		process1 t3 = new process1(3,9,7001);
+		process t3 = new process(3,9,7001);
 		t3.start();
 		
 		/*

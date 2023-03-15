@@ -20,7 +20,7 @@ public class Master {
 				DatagramPacket pkg = new DatagramPacket(rec, rec.length);
 				mcs.receive(pkg);
 				String data = new String(pkg.getData(), 0, pkg.getLength());
-				System.out.println("Dados recebidos: " + data);
+				System.out.println("times received: " + data);
 				
 				timepus += Integer.parseInt(data);
 				list.add(pkg);
@@ -30,12 +30,12 @@ public class Master {
 			}
 			
 			int average = (timepus + timeMaster) / list.size() + 1; 
+			timeMaster = average;
 			
 			for (DatagramPacket item : list) {	
 				  byte[] sen = new byte[1024]; sen = Integer.toString(average).getBytes();
 				  DatagramPacket test = new DatagramPacket(sen, sen.length, add, item.getPort());
 				  mcs.send(test);
-				System.out.println(item.getPort());
 			}
 
 			

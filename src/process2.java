@@ -11,8 +11,11 @@ public class process2 extends Thread{
 		
 		process1 t1 = new process1(1,5,7000);
 		t1.start();
-		process1 t2 = new process1(1,5,7000);
+		process1 t2 = new process1(2,13,7002);
 		t2.start();
+		process1 t3 = new process1(3,9,7001);
+		t3.start();
+		
 		/*
 		 * process1 t2 = new process1(1,5,7002); t1.start(); process1 t3 = new
 		 * process1(1,5,7003); t1.start();

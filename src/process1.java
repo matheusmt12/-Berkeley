@@ -19,7 +19,10 @@ public class process1 extends Thread {
 
 	public void run() {
 		try {
-			byte[] b = "Testando Broadcast1".getBytes();
+			
+			
+			
+			byte[] b = Integer.toString(time).getBytes();
 
 			InetAddress addr = InetAddress.getByName("255.255.255.255");
 			DatagramPacket pkg = new DatagramPacket(b, b.length, addr, 6001);
@@ -31,7 +34,8 @@ public class process1 extends Thread {
 			pkg = new DatagramPacket(r, r.length);
 			ds.receive(pkg);
 			String data = new String(pkg.getData(), 0, pkg.getLength());
-			System.out.println("Dados recebidos: " + data);
+			this.time =  Integer.parseInt(data);
+			System.out.println("identity :" + this.identity + " synced " + this.time);
 			System.out.println("Teerminou");
 		} catch (Exception e) {
 			System.out.println("Nao foi possivel enviar a mensagem");

@@ -2,6 +2,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 
 public class process1 extends Thread{
 	
@@ -10,13 +12,19 @@ public class process1 extends Thread{
 	
 		try {
 			byte[] b = "Testando Broadcast1".getBytes();
-			//Definindo o endere�o de envio do pacote neste caso o endere�o de broadcast
+
 			InetAddress addr = InetAddress.getByName("255.255.255.255");
 			DatagramPacket pkg = new DatagramPacket(b, b.length, addr,6001);
-			DatagramSocket ds = new DatagramSocket();
+			DatagramSocket ds = new DatagramSocket(6002);
 			
-			ds.send(pkg);//enviando pacote broadcast
+			ds.send(pkg);
 			
+			byte[] r = new byte[1024];
+			pkg = new DatagramPacket(r, r.length);
+			ds.receive(pkg);
+			String data = new String(pkg.getData(), 0, pkg.getLength());
+			System.out.println("Dados recebidos: " + data);
+			System.out.println("Teerminou");
 			}
 		catch (Exception e) {
 			System.out.println("Nao foi possivel enviar a mensagem");

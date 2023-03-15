@@ -26,6 +26,16 @@ public class Master {
 				pkg = new DatagramPacket(sen, sen.length, add, pkg.getPort());
 				
 				mcs.send(pkg);
+				mcs.receive(pkg);
+				data = new String(pkg.getData(), 0, pkg.getLength());
+				System.out.println("Dados recebidos: " + data);
+				//System.out.println(i);
+				//i++;}
+				sen = new byte[1024];
+				sen = "aceito".getBytes();
+				pkg = new DatagramPacket(sen, sen.length, add, pkg.getPort());
+				
+				mcs.send(pkg);
 				
 		}
 
